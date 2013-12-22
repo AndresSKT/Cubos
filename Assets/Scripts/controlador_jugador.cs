@@ -5,7 +5,7 @@ public class controlador_jugador : MonoBehaviour {
 
 	public float VelocidadMaxima=10f;
 	public Vector2 fuerzaSalto = new Vector2 (0,200);
-
+	public GameObject objetoParaComprobarSuelo;
 
 	Rigidbody2D fisicas;
 	Animator animacion;
@@ -20,9 +20,13 @@ public class controlador_jugador : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+		RaycastHit2D colisionSuelo = Physics2D.Linecast (transform.position, objetoParaComprobarSuelo.transform.position,1<<8);
+		pisandoElSuelo = (colisionSuelo.transform != null);
+
 		entrada ();
 		animacion.SetBool("EnElAire",estaEnElAire());
 		animacion.SetFloat("velocidadY",fisicas.velocity.y);
+
 		
 	}
 
@@ -54,21 +58,7 @@ public class controlador_jugador : MonoBehaviour {
 	void flip(){
 		transform.localScale = new Vector3 (transform.localScale.x*-1,transform.localScale.y, transform.localScale.z);
 	}
-
-
-
-	void OnCollisionEnter2D(Collision2D coll){
-		pisandoElSuelo =coll.gameObject.CompareTag ("suelo")?true:pisandoElSuelo;
-	}
-
-	void OnCollisionStay2D(Collision2D coll){
-		pisandoElSuelo =coll.gameObject.CompareTag ("suelo")?true:pisandoElSuelo;
-	}
-
-	void OnCollisionExit2D(Collision2D coll){
-		pisandoElSuelo =coll.gameObject.CompareTag ("suelo")?false:pisandoElSuelo;
-	}
-
+	
 
 	bool estaEnElAire(){
 		return !pisandoElSuelo;
