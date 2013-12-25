@@ -2,11 +2,15 @@
 using System.Collections;
 
 
+[RequireComponent(typeof(InputWrapper))]
 public class controlador_jugador : MonoBehaviour {
 
 	public float VelocidadMaxima=10f;
 	public Vector2 fuerzaSalto = new Vector2 (0,200);
 	public GameObject objetoParaComprobarSuelo;
+
+	InputWrapper entradaAlternativa;
+
 
 	[HideInInspector]
 	public bool pisandoElSuelo=false;
@@ -18,7 +22,7 @@ public class controlador_jugador : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		animacion = this.GetComponent<Animator> ();
-		
+		entradaAlternativa = GetComponent<InputWrapper> ();
 		}
 	
 	// Update is called once per frame
@@ -41,11 +45,14 @@ public class controlador_jugador : MonoBehaviour {
 		}
 
 		float jump = Input.GetAxis ("Jump");
-		if (jump > 0) {
+		if (jump > 0 || entradaAlternativa.Jump>0) {
 				Saltar();
 		}
 
-		float velRel = Input.GetAxis ("Horizontal");
+		float velRel = entradaAlternativa.Horizontal;
+		if (velRel == 0) {
+			velRel=Input.GetAxis ("Horizontal");		
+		}
 		rigidbody2D.velocity = new Vector2 (VelocidadMaxima * velRel, rigidbody2D.velocity.y);
 		animacion.SetFloat ("velocidad", Mathf.Abs(VelocidadMaxima*velRel));
 		if (mirandoALaDerecha && velRel < 0) {
