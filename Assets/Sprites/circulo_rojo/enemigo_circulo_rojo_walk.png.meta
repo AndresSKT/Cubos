@@ -1,0 +1,625 @@
+fileFormatVersion: 2
+guid: fe841e1b0706ce14dbd35a249747c9f5
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 70
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: enemigo_circulo_rojo_walk_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 380
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_1
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 380
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_2
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 380
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_3
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 380
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_4
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 380
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_5
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 380
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_6
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 380
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_7
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 380
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 326
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_9
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 326
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_10
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 326
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_11
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 326
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_12
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 326
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_13
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 326
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_14
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 326
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_15
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 326
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 272
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_17
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 272
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_18
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 272
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_19
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 272
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_20
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 272
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_21
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 272
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_22
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 272
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_23
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 272
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 218
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_25
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 218
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_26
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 218
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_27
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 218
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_28
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 218
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_29
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 218
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_30
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 218
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_31
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 218
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 164
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_33
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 164
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_34
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 164
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_35
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 164
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_36
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 164
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_37
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 164
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_38
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 164
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_39
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 164
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 110
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_41
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 110
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_42
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 110
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_43
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 110
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_44
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 110
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_45
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 110
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_46
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 110
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_47
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 110
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 56
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_49
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 56
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_50
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 56
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_51
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 56
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_52
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 56
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_53
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 56
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_54
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 56
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_55
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 56
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_57
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 2
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_58
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 2
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_59
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 2
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_60
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 2
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_61
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 2
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_62
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 2
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_walk_63
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 2
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+  spritePackingTag: 
+  userData: 

@@ -6,8 +6,17 @@ using System.Collections;
 public class controlador_jugador : MonoBehaviour {
 
 	public float VelocidadMaxima=10f;
-	public Vector2 fuerzaSalto = new Vector2 (0,200);
+	public float velocidadSalto = 20f;
 	public GameObject objetoParaComprobarSuelo;
+	public GameObject puntoDeDisparo;
+	public GameObject[] disparos;
+
+
+	public float tiempoEntreBalas = 0.5f;
+	
+	float ultimaBala=0;
+
+
 
 	InputWrapper entradaAlternativa;
 
@@ -40,21 +49,16 @@ public class controlador_jugador : MonoBehaviour {
 	}
 
 	void entrada(){
-		if (estaEnElAire()) {
-			return;		
-		}
-
-		float jump = Input.GetAxis ("Jump");
-		if (jump > 0 || entradaAlternativa.Jump>0) {
-				Saltar();
-		}
 
 		float velRel = entradaAlternativa.Horizontal;
 		if (velRel == 0) {
 			velRel=Input.GetAxis ("Horizontal");		
 		}
-		rigidbody2D.velocity = new Vector2 (VelocidadMaxima * velRel, rigidbody2D.velocity.y);
-		animacion.SetFloat ("velocidad", Mathf.Abs(VelocidadMaxima*velRel));
+		if (velRel > 0) {
+			velRel = 1;		
+		} else if (velRel < 0) {
+			velRel=-1;		
+		}
 		if (mirandoALaDerecha && velRel < 0) {
 			flip ();
 			mirandoALaDerecha=false;
@@ -62,6 +66,25 @@ public class controlador_jugador : MonoBehaviour {
 			flip();		
 			mirandoALaDerecha=true;
 		}
+
+
+		//disparos
+		if (Input.GetAxis ("disparar") > 0) {
+			disparar();		
+		}
+
+		if (estaEnElAire()) {
+			return;		
+		}
+
+		float jump = Input.GetAxis ("Jump");
+		if (jump > 0 || entradaAlternativa.Jump>0) {
+			Saltar();
+		}
+
+		rigidbody2D.velocity = new Vector2 (VelocidadMaxima*velRel, rigidbody2D.velocity.y);
+		animacion.SetFloat ("velocidad", Mathf.Abs(VelocidadMaxima*velRel));
+
 
 	}
 
@@ -71,12 +94,28 @@ public class controlador_jugador : MonoBehaviour {
 	}
 
 		void Saltar(){
-			rigidbody2D.AddForce(fuerzaSalto);
+
+		float velY = rigidbody2D.velocity.x;
+		rigidbody2D.velocity = new Vector2 (velY, velocidadSalto);
+
 
 		}
 	
 
 	public bool estaEnElAire(){
 		return !pisandoElSuelo;
+	}
+
+	public void disparar(){
+		if (Time.time - ultimaBala < tiempoEntreBalas) {
+			return;
+		}
+		ultimaBala = Time.time;
+
+		GameObject bala = Instantiate (disparos [0]) as GameObject;
+		bala.GetComponent<SpriteRenderer> ().color = new Color (Random.Range (0f, 1f), Random.Range (0f, 1f), Random.Range (0f, 1f), 1f);
+		bala.transform.position = puntoDeDisparo.transform.position;
+		(bala.GetComponent<logicaBala> ()).Direccion = (mirandoALaDerecha) ? Vector2.right : Vector2.right * -1;
+		
 	}
 }

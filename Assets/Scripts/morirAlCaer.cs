@@ -2,13 +2,14 @@
 using System.Collections;
 
 
-
+[RequireComponent(typeof(logicaJugador))]
 public class morirAlCaer : MonoBehaviour {
 
 	public int finDelMundo=-100;
 	public GameObject objPos;
 	public float tiempoParaVolver=3f;
 
+	logicaJugador logica;
 
 	controlador_jugador controlador;
 
@@ -16,6 +17,7 @@ public class morirAlCaer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		controlador = GetComponent<controlador_jugador> ();
+		logica = GetComponent<logicaJugador> (); 
 	}
 	
 	// Update is called once per frame
@@ -35,6 +37,8 @@ public class morirAlCaer : MonoBehaviour {
 	}
 
 	void morir(){
+
 		Destroy(this.gameObject);
+		logica.morir ();
 	}
 }

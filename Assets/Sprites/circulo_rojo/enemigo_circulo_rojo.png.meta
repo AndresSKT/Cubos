@@ -1,0 +1,616 @@
+fileFormatVersion: 2
+guid: 82d2017e3c5e6884d915ca02767a61cf
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 70
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: enemigo_circulo_rojo_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 450
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_1
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 450
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_2
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 450
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_3
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 450
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_4
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 450
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_5
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 450
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_6
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 450
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_7
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 450
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 388
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_9
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 388
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_10
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 388
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_11
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 388
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_12
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 388
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_13
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 388
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_14
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 388
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_15
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 388
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 326
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_17
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 326
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_18
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 326
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_19
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 326
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_20
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 326
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_21
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 326
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_22
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 326
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_23
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 326
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 264
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_25
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 264
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_26
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 264
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_27
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 264
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_28
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 264
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_29
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 264
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_30
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 264
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_31
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 264
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 202
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_33
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 202
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_34
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 202
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_35
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 202
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_36
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 202
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_37
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 202
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_38
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 202
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_39
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 202
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 140
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_41
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 140
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_42
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 140
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_43
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 140
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_44
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 140
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_45
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 140
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_46
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 140
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_47
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 140
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 78
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_49
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 78
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_50
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 78
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_51
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 78
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_52
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 78
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_53
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 78
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_54
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 78
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_55
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 78
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_57
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 16
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_58
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 16
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_59
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 16
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_60
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 16
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_61
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 16
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: enemigo_circulo_rojo_62
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 16
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+  spritePackingTag: 
+  userData: 
