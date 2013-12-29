@@ -7,6 +7,7 @@ Square es un juego hecho a pedal en unity 3D, la idea es simplemente probar el m
 **Unity:**
 
  - TouchScript
+ - Smart Localization
  
 
 **"Diseño y Animación":**
