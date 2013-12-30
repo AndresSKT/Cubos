@@ -25,6 +25,9 @@ public class logicaBala : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D coll){
+		if (coll.gameObject.CompareTag ("enemigo")) {
+			(coll.gameObject.GetComponent<Vida>()).aplicarDaño(daño);
+		}
 		morir (0);
 	}
 

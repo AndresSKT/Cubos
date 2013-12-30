@@ -9,7 +9,10 @@ public class ControladorEnemigo : MonoBehaviour {
 	public float distanciaALaDerecha=100;
 	public float distanciaALaIzquierda=100;
 	public float velocidad=10;
+	public int daño=20;
+	public float tiempoParaDañar=1f;
 
+	float ultimoDaño=0;
 	bool miraAlaDerecha=false;
 	Animator animacion;
 
@@ -37,5 +40,35 @@ public class ControladorEnemigo : MonoBehaviour {
 	void flip(){
 		miraAlaDerecha = !miraAlaDerecha;
 		transform.localScale = new Vector3 (transform.localScale.x*-1,transform.localScale.y,transform.localScale.z);
+		//posicionOriginal = transform.position;
+	}
+
+	void OnCollisionEnter2D(Collision2D col){
+
+		if (col.gameObject.CompareTag ("Player")) {
+			atacarJugador(col.gameObject);
+			return;
+		}
+
+		foreach (ContactPoint2D punto in col.contacts) {
+			if ((punto.normal.x>=0.5 && !miraAlaDerecha) || ((punto.normal.x<=-0.5 && miraAlaDerecha))){
+				flip();
+				break;
+			}
+		}
+	}
+
+	void OnCollisionStay2D(Collision2D col){
+		if (col.gameObject.CompareTag ("Player")) {
+			atacarJugador(col.gameObject);
+		}
+	}
+
+	void atacarJugador(GameObject jug){
+		if (Time.time-ultimoDaño<tiempoParaDañar){return;}
+		ultimoDaño=Time.time;
+		Vida cont = jug.GetComponent<Vida>();
+		cont.aplicarDaño(daño);
+
 	}
 }

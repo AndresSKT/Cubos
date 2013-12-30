@@ -113,7 +113,7 @@ public class controlador_jugador : MonoBehaviour {
 		ultimaBala = Time.time;
 
 		GameObject bala = Instantiate (disparos [0]) as GameObject;
-		bala.GetComponent<SpriteRenderer> ().color = new Color (Random.Range (0f, 1f), Random.Range (0f, 1f), Random.Range (0f, 1f), 1f);
+		//bala.GetComponent<SpriteRenderer> ().color = new Color (Random.Range (0f, 1f), Random.Range (0f, 1f), Random.Range (0f, 1f), 1f);
 		bala.transform.position = puntoDeDisparo.transform.position;
 		(bala.GetComponent<logicaBala> ()).Direccion = (mirandoALaDerecha) ? Vector2.right : Vector2.right * -1;
 		

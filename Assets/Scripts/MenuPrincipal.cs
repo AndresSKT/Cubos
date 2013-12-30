@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Configuracion;
 
 
 public class MenuPrincipal : MonoBehaviour {
@@ -18,12 +19,23 @@ public class MenuPrincipal : MonoBehaviour {
 
 	GUIStyle estiloBotonMenuCentral;
 
+	LanguageManager traduccion;
+
+	//labels
+	string labelBotonJugar;
+
+
 
 	// Use this for initialization
 	void Start () {
 		posMenuCentral = new Rect ((Screen.width - anchoMenuCentral) / 2, altoBotonMenuCentral,anchoMenuCentral, altoBotonMenuCentral * 5);
 		posBotonJugar = new Rect (0, 0, anchoMenuCentral, altoBotonMenuCentral);
 		estiloBotonMenuCentral = estiloMenu.GetStyle("boton_principal");
+
+		configuracionGeneral.Load ();
+		traduccion = LanguageManager.Instance;
+		traduccion.ChangeLanguage (configuracionGeneral.UserPreferedLanguage);
+		labelBotonJugar = traduccion.GetTextValue("menuprincipaljugar");
 	}
 	
 	// Upis called once per frame
@@ -35,7 +47,7 @@ public class MenuPrincipal : MonoBehaviour {
 
 	void OnGUI(){
 		GUI.BeginGroup (posMenuCentral);
-		if (GUI.Button (posBotonJugar, "Jugar", estiloBotonMenuCentral)) {
+		if (GUI.Button (posBotonJugar,labelBotonJugar, estiloBotonMenuCentral)) {
 			carga=true;
 			Application.LoadLevel(1);
 
