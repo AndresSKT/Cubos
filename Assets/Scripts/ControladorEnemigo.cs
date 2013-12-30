@@ -50,10 +50,13 @@ public class ControladorEnemigo : MonoBehaviour {
 			return;
 		}
 
-		foreach (ContactPoint2D punto in col.contacts) {
-			if ((punto.normal.x>=0.5 && !miraAlaDerecha) || ((punto.normal.x<=-0.5 && miraAlaDerecha))){
-				flip();
-				break;
+		if (!col.gameObject.CompareTag ("bala")) {
+
+			foreach (ContactPoint2D punto in col.contacts) {
+				if ((punto.normal.x >= 0.5 && !miraAlaDerecha) || ((punto.normal.x <= -0.5 && miraAlaDerecha))) {
+					flip ();
+					break;
+				}
 			}
 		}
 	}
