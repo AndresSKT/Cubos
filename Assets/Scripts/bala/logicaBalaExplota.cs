@@ -10,7 +10,7 @@ public class logicaBalaExplota : logicaBala {
 
 		float radio=0;
 		// Use this for initialization
-	void Start () {
+	void Awake () {
 			instVida = GetComponent<vida.Vida>();
 			radio=area.GetComponent<CircleCollider2D>().radius;
 			morir(tiempoDeVida);
