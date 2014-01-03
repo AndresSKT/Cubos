@@ -15,9 +15,10 @@ public class logicaBala : MonoBehaviour {
 	public float tiempoDeVida=2f;
 	
 	protected Vida instVida;
-
+	
+	
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		instVida=GetComponent<Vida>();
 		morir(tiempoDeVida);
 	}

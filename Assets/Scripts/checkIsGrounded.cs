@@ -3,11 +3,11 @@ using System.Collections;
 
 public class checkIsGrounded : MonoBehaviour {
 
-	public GameObject[] puntos;
 	public string CapaDelSuelo="suelo";
 
 	Vector3 upward=Vector3.up;
 	controlador_jugador controlador;
+
 
 		int capa;
 	
@@ -20,16 +20,42 @@ public class checkIsGrounded : MonoBehaviour {
 	void FixedUpdate () {
 			bool tocando = false;
 			upward=Vector3.up;
-			for (int i=0; i<puntos.Length; i++) {
-			Transform tmp = Physics2D.Linecast(transform.position,puntos[i].transform.position,capa).transform;
-				if (tmp!=null){
-					upward=tmp.up;
-					tocando=true;
-				}			
+	}
+
+	void OnCollisionEnter2D(Collision2D coll){
+		if (coll.gameObject!=null && coll.gameObject.CompareTag(CapaDelSuelo)){
+			foreach(ContactPoint2D p in coll.contacts){
+				if (p.normal.y>0.5){
+					upward=p.normal;
+					controlador.pisandoElSuelo=true;
+					controlador.upVector=p.normal;
+					break;
+				}
 			}
-			controlador.pisandoElSuelo = tocando;
+		}
+
+	}
+
+	void OnCollisionStay2D(Collision2D coll){
+		if (coll.gameObject!=null && coll.gameObject.CompareTag(CapaDelSuelo)){
+			foreach(ContactPoint2D p in coll.contacts){
+				if (p.normal.y>0.5){
+					upward=p.normal;
+					controlador.pisandoElSuelo=true;
+					controlador.upVector=p.normal;
+					break;
+				}
+			}
+		}
+		
+	}
+
+	void OnCollisionExit2D(Collision2D coll){
+		if (coll.gameObject!=null && coll.gameObject.CompareTag(CapaDelSuelo)){
+			upward=Vector3.up;
+			controlador.pisandoElSuelo=false;
 			controlador.upVector=upward;
-			
+		}
 	}
 
 }

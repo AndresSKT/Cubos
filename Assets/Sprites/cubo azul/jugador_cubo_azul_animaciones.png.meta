@@ -1,0 +1,481 @@
+fileFormatVersion: 2
+guid: f8a2d60ecc2f8964c888e3288f08c968
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 120
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: jugador_cubo_azul_animaciones_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 890
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 890
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_2
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 890
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_3
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 890
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_4
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 890
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_5
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 890
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_6
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 890
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_7
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 890
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_8
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 890
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_9
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 890
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 756
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_11
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 756
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_12
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 756
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_13
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 756
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_14
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 756
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_15
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 756
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_16
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 756
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_17
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 756
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_18
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 756
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_19
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 756
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 622
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_21
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 622
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_22
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 622
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_23
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 622
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_24
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 622
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_25
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 622
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_26
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 622
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_27
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 622
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_28
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 622
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_29
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 622
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 488
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_31
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 488
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_32
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 488
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_33
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 488
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_34
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 488
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_35
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 488
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_36
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 488
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_37
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 488
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_38
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 488
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_39
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 488
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 354
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_41
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 354
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_42
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 354
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_43
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 354
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_44
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 354
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_45
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 354
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_46
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 354
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: jugador_cubo_azul_animaciones_47
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 354
+        width: 100
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+  spritePackingTag: 
+  userData: 
