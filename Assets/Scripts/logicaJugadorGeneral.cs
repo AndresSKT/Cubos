@@ -6,7 +6,6 @@ public class logicaJugadorGeneral : logicaJugador {
 	public GameObject logicaDelNivel;
 
 
-	int levelScore=0;
 	nivel logica;
 
 	// Use this for initialization
@@ -25,13 +24,14 @@ public class logicaJugadorGeneral : logicaJugador {
 
 	void OnTriggerEnter2D(Collider2D coll){
 		if (coll.gameObject.CompareTag ("moneda")) {
-			sumarPuntaje(coll.gameObject.GetComponent<item>().puntos);
+			item itemtmp =coll.gameObject.GetComponent<item>();
+			sumarPuntaje(itemtmp.puntos);
+			itemtmp.isPicked=true;
 			Destroy(coll.gameObject);
 		}
 	}
 
 	void sumarPuntaje(int puntaje){
-		levelScore += puntaje;
-		logica.Puntaje = levelScore;
+		logica.anadirPuntos(puntaje);
 	}
 }

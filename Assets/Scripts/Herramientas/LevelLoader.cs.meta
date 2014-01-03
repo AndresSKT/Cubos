@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: ec266b9fe8e61f84fbddbd6eb59b8382
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - ScreenImage: {fileID: 2800000, guid: 18ee635d2176c424fa03200cbaf0ebe4, type: 3}
+  - estilo: {fileID: 11400000, guid: fa8be160416578b4f962168ac4a667a4, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

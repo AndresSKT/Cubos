@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: f33efe17e5198af4ab9a61042cf48ed1
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - botonPausa: {fileID: 2800000, guid: 4878b8f4c0c629d469fd5de6c90e7872, type: 3}
+  - estilo: {fileID: 11400000, guid: 2f627a1786c4bae4894d894b37fb09bd, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

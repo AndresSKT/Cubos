@@ -1,30 +1,47 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Configuracion;
+using Logica.Objetivos;
+using vida;
 
 
 public class nivel : MonoBehaviour {
 
+	public delegate void finDelNivelHandler(int puntaje);
 
+	public event finDelNivelHandler HaFinalizadoElNivel;
+	public event finDelNivelHandler ELJugadorHaPerdidoElNivel;
+	#region declaracion de variables
 	public GUISkin estilo;
 	public Texture texturaVida;
 	public Texture texturaMana;
 	public Texture fondoBarra;
+	public string MenuPrincipal="MenuPrincipal";
 
-	public int Puntaje=0;
+
+	int _puntaje=0;
+	public int Puntaje{
+		get{
+			return _puntaje;
+		}
+		private set{
+			_puntaje=value;
+		}
+
+	}
 	public GameObject jugador;
 
+
+	public string siguienteNivel=null;
 
 	Rect posicionPuntaje;
 	Rect posGrupoVida;
 	Rect posBarraVida;
-	Rect recBarraVidaReal;
 	Rect posLabelVida;
 	Rect posLabelNombreVida;
 	Rect recfondoBarraVida;
 
 	Rect posBarraMana;
-	Rect recBarraManaReal;
 	Rect posLabelMana;
 	Rect posLabelNombreMana;
 	Rect recfondoBarraMana;
@@ -52,6 +69,7 @@ public class nivel : MonoBehaviour {
 
 	Vida vidaJugador=null;
 	mana manaJugador=null;
+	Objetivo[] objetivos;
 
 	string labelPuntaje="";
 	string labelVida="";
@@ -59,26 +77,39 @@ public class nivel : MonoBehaviour {
 
 	LanguageManager traductor;
 
+	#endregion
+
+	private bool _haFinalizado;
+
+	public bool haFinalizado{
+		get {
+			return _haFinalizado;
+		}
+		protected set{
+			_haFinalizado=value;
+		}
+	}
+
 	void Start () {
 		estiloPuntaje = estilo.GetStyle ("puntaje");
 		estiloLabelVida = estilo.GetStyle ("label_vida");
 		estiloLabelMana = estilo.GetStyle("label_mana");
 
-		posicionPuntaje = new Rect (50, 30, 300, this.estiloPuntaje.fontSize+estiloPuntaje.padding.bottom);
-		posGrupoVida = new Rect (posicionPuntaje.xMax + 10,30,Screen.width-250-(posicionPuntaje.xMax),60);
-		longitudBarraDeVida = posGrupoVida.width - 80;
-		posBarraVida = new Rect (60, 5,longitudBarraDeVida, 20);
-		recBarraVidaReal = new Rect (0, 0,longitudBarraDeVida, 22);
-		posLabelVida = new Rect (60,5,longitudBarraDeVida,22);
-		posLabelNombreVida = new Rect (13, 5, 50, 22);
-		recfondoBarraVida = new Rect (posBarraVida.x,posBarraVida.y,recBarraVidaReal.width,posBarraVida.height);
+		posGrupoVida = new Rect (50,10,Mathf.Min(400,Screen.width),60);
+		posLabelNombreVida = new Rect (13, 5, 70, 22);
+		longitudBarraDeVida = posGrupoVida.width - 20 -posLabelNombreVida.xMax;
+		posBarraVida = new Rect (posLabelNombreVida.xMax, 5,longitudBarraDeVida, 20);
+		posLabelVida = new Rect (posBarraVida.xMin,5,longitudBarraDeVida,22);
+		recfondoBarraVida = new Rect (posBarraVida.x,posBarraVida.y,posBarraVida.width,posBarraVida.height);
 
-		longitudBarraDeMana = posGrupoVida.width - 80;
-		posBarraMana = new Rect (60, posBarraVida.yMax+5,longitudBarraDeVida, 20);
-		recBarraManaReal = new Rect (0, 0,longitudBarraDeVida, 22);
-		posLabelMana = new Rect (60,posBarraMana.yMin,longitudBarraDeVida,22);
-		posLabelNombreMana = new Rect (13, posLabelNombreVida.yMax, 50, 22);
-		recfondoBarraMana = new Rect (posBarraMana.x,posBarraMana.y,recBarraManaReal.width,posBarraMana.height);
+		posLabelNombreMana = new Rect (13, posLabelNombreVida.yMax, 70,22);
+		longitudBarraDeMana = posGrupoVida.width - 20-posLabelNombreMana.xMax;
+		posBarraMana = new Rect (posLabelNombreMana.xMax, posBarraVida.yMax+5,longitudBarraDeMana, 20);
+		posLabelMana = new Rect (posBarraMana.xMin,posBarraMana.yMin,longitudBarraDeMana,22);
+		recfondoBarraMana = new Rect (posBarraMana.x,posBarraMana.y,longitudBarraDeMana,posBarraMana.height);
+
+
+		posicionPuntaje = new Rect (50, posGrupoVida.yMax+4, 300, this.estiloPuntaje.fontSize+estiloPuntaje.padding.bottom);
 
 
 		if (jugador != null) {
@@ -86,13 +117,26 @@ public class nivel : MonoBehaviour {
 		}
 		traductor = LanguageManager.Instance;
 		labelinit ();
+	
+		objetivos = gameObject.GetComponents<Objetivo> ();
 	}
 
+
+	public bool todosLosObjetivosEstanCumplidos(){
+		foreach (Objetivo obj in objetivos) {
+			if (!obj.ObjetivoCumplido()){
+				return false;
+			}
+		}
+		return true;
+	}
 
 	void labelinit(){
 
 		labelPuntaje = traductor.GetTextValue("guiscore");
 		labelVida = traductor.GetTextValue("guilife");
+		labelMana = traductor.GetTextValue("guimana");
+
 	}
 	// Update is called once per frame
 	void Update () {
@@ -101,8 +145,8 @@ public class nivel : MonoBehaviour {
 			porcentajeVida = ((float)vidaJugador.vida/vidaJugador.vidaMaxima);
 			ContenidoLabelVida = vidaJugador.vida+" / "+vidaJugador.vidaMaxima;
 
-			porcentajeMana = ((float)manaJugador.manaActual/manaJugador.maxMana);
-			ContenidoLabelMana = manaJugador.manaActual+" / "+manaJugador.maxMana;
+			porcentajeMana = manaJugador.manaActual/manaJugador.maxMana;
+			ContenidoLabelMana = (int)manaJugador.manaActual+" / "+manaJugador.maxMana;
 		} else {
 			porcentajeVida=0;
 			ContenidoLabelVida = "0/?";
@@ -119,34 +163,80 @@ public class nivel : MonoBehaviour {
 
 	}
 
+	void FixedUpdate(){
+		bool fintmp=todosLosObjetivosEstanCumplidos();
+		if (fintmp && !haFinalizado){
+			deshabilitarAlJugador();
+			HaFinalizadoElNivel(Puntaje);
+		}
+		haFinalizado=fintmp;
+	}
+
+	void deshabilitarAlJugador(){
+		if (jugador!=null){
+			jugador.GetComponent<controlador_jugador>().enabled=false;
+		}
+	}
+
 	void OnGUI(){
-		GUI.Label (posicionPuntaje,labelPuntaje+": "+Puntaje, this.estiloPuntaje);
+		GUI.depth=1;
+
 		GUI.BeginGroup (posGrupoVida, estilo.box);
 			GUI.DrawTexture(recfondoBarraVida,fondoBarra);
-			GUI.BeginGroup (posBarraVida);
-				GUI.DrawTexture (recBarraVidaReal, texturaVida);
-			GUI.EndGroup ();
+			GUI.DrawTexture (posBarraVida, texturaVida);
 			GUI.Label (posLabelVida, ContenidoLabelVida,estiloLabelVida);
 			GUI.Label (posLabelNombreVida, labelVida + ": ",estilo.label);
 			GUI.DrawTexture(recfondoBarraMana,fondoBarra);
-			GUI.BeginGroup (posBarraMana);
-				GUI.DrawTexture (recBarraManaReal, texturaMana);
-			GUI.EndGroup ();
-
+			GUI.DrawTexture (posBarraMana, texturaMana);
 		GUI.Label (posLabelMana, ContenidoLabelMana,estiloLabelMana);
 		GUI.Label (posLabelNombreMana, labelMana + ": ",estilo.label);
-		GUI.EndGroup ();
 
+		GUI.EndGroup ();
+		GUI.Label (posicionPuntaje,labelPuntaje+": "+Puntaje, this.estiloPuntaje);
 
 	}
 
 	public void jugadorMurio(){
-		
+		ELJugadorHaPerdidoElNivel(Puntaje);
 	}
 
 	public void setJugador(GameObject JUG){
 		jugador = JUG;
 		vidaJugador = jugador.GetComponent<Vida> ();
 		manaJugador = jugador.GetComponent<mana> ();
+		vidaJugador.estaMueriendo+=elJugadorEstaMuriendo;
 	}
+
+	public void anadirPuntos(int puntos){
+		Puntaje += puntos;
+	}
+
+	public bool HayMasNiveles{
+		get{
+			return (!siguienteNivel.Equals("") && siguienteNivel!=null);
+		}
+	}
+
+	public void reiniciarNivel(){
+		Herramientas.LevelLoader.CargarNivel(Application.loadedLevelName);
+	}
+
+	public void cargarMenuPrincipal(){
+		Herramientas.LevelLoader.CargarNivel(MenuPrincipal);
+	}
+
+	public void elJugadorEstaMuriendo(GameObject objeto, motivoDeMuerte motivo){
+		if (vidaJugador!=null){
+			vidaJugador.estaMueriendo-=elJugadorEstaMuriendo;
+		}
+		jugadorMurio();
+		if (motivo!=vida.motivoDeMuerte.Indefinida){
+
+		}
+	}
+
+	public bool elJugadorPuedeAvanzar{
+		get {return HayMasNiveles && (vidaJugador!=null && vidaJugador.estaVivo);}
+	}
+
 }

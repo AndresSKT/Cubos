@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using vida;
+
+
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]

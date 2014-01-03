@@ -15,6 +15,14 @@ using UnityEngine;
 			
 			public int puntos=0;
 			public bool pickable=false;
+	public bool isPicked=false;
 
+	public AudioClip SonidoAlDestruir;
+
+	void OnDestroy(){
+		if (SonidoAlDestruir!=null && isPicked){
+			Sonido.PlayFX(transform.position,this.SonidoAlDestruir);
+		}
+	}
 		}
 

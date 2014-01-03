@@ -5,6 +5,8 @@ public class checkIsGrounded : MonoBehaviour {
 
 	public GameObject[] puntos;
 	public string CapaDelSuelo="suelo";
+
+	Vector3 upward=Vector3.up;
 	controlador_jugador controlador;
 
 		int capa;
@@ -17,12 +19,17 @@ public class checkIsGrounded : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 			bool tocando = false;
+			upward=Vector3.up;
 			for (int i=0; i<puntos.Length; i++) {
-				if (Physics2D.Linecast(transform.position,puntos[i].transform.position,capa).transform!=null){
+			Transform tmp = Physics2D.Linecast(transform.position,puntos[i].transform.position,capa).transform;
+				if (tmp!=null){
+					upward=tmp.up;
 					tocando=true;
 				}			
 			}
 			controlador.pisandoElSuelo = tocando;
+			controlador.upVector=upward;
+			
 	}
 
 }

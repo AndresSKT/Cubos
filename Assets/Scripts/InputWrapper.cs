@@ -6,6 +6,8 @@ public abstract class InputWrapper:MonoBehaviour {
 	protected int _jump=0;
 	protected int _horizontal=0;
 
+	protected bool[] Disparar= new bool[10];
+
 	public int Jump {
 		get{
 			return _jump;
@@ -22,5 +24,9 @@ public abstract class InputWrapper:MonoBehaviour {
 		protected set{
 			_horizontal=value;
 		}
+	}
+
+	public bool getDisparar(int index){
+		return Disparar[index];
 	}
 }
