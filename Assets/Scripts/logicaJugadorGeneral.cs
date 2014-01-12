@@ -10,9 +10,12 @@ public class logicaJugadorGeneral : logicaJugador {
 
 	// Use this for initialization
 	void Start () {
+		if (logicaDelNivel!=null){
 		logica = logicaDelNivel.GetComponent<nivel> ();
+		}
 	}
-	
+
+
 	// Update is called once per frame
 	void Update () {
 	

@@ -72,6 +72,7 @@ public class finDeNivel : MonoBehaviour {
 		GUILayout.FlexibleSpace();
 		if (instNivel.elJugadorPuedeAvanzar){
 			if (GUILayout.Button(LanguageManager.Instance.GetTextValue("menufinEscenaSiguiente"),estiloBotonPrincipal,GUILayout.MaxHeight(50))){
+				instNivel.AlmacenarPuntajeEnDatos();
 				Herramientas.LevelLoader.CargarNivel(instNivel.siguienteNivel);
 			}
 		}

@@ -11,10 +11,6 @@ public class configuracionGeneral {
 	static bool loaded=false;
 
 	public static void Load(){
-			if (!PlayerPrefs.HasKey ("generalinit")) {
-				 Default();
-			}
-	
 			if (PlayerPrefs.HasKey("sonido_activo")){
 				cacheSonidoActivo= PlayerPrefs.GetInt("sonido_activo")>0;
 			}
@@ -24,13 +20,7 @@ public class configuracionGeneral {
 			}
 		
 		}
-		
 
-	static void Default(){
-			PlayerPrefs.SetString("deflang","en");
-			PlayerPrefs.SetInt("generalinit",1);
-			PlayerPrefs.Save ();
-	}
 
 		public static string Idioma{
 

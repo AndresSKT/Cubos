@@ -19,7 +19,7 @@ namespace Logica.Objetivos
 		List<GameObject> aMatar = new List<GameObject>();
 
 
-		void Start(){
+		void Awake(){
 			logicalDelNivel = GetComponent<nivel> ();
 			GameObject[] enemigostmp = GameObject.FindGameObjectsWithTag (tagObjetosIniciales);
 			foreach (GameObject enemigo in enemigostmp) {
@@ -48,6 +48,9 @@ namespace Logica.Objetivos
 					logicalDelNivel.anadirPuntos(tmpvida.PuntosDeRecompensaAlMorir);
 				}
 				aMatar.Remove (objeto);
+			}
+			if (aMatar.Count==0){
+				base.OnHaCumplidoElObjetivo(this);
 			}
 		}
 

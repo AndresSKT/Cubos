@@ -10,6 +10,8 @@ namespace Menu
 	public class MenuPrincipal : MonoBehaviour
 	{
 
+		string campo="******";
+
 
 		public GUISkin estiloMenu;
 		public float anchoMenuCentral = 600;
@@ -61,30 +63,66 @@ namespace Menu
 			string idioma = configuracionGeneral.Idioma;
 			if (idioma==null){
 				menuDeIdioma.enabled=true;
+				menuDeIdioma.puedeCerrar=false;
 			}
 			else {
 				traduccion.ChangeLanguage(idioma);
 			}
 
 		}
-	
+
+        string ultimoCampoSeleccionado = "";
+        string campoSeleccionado = "";
+        private void actualizarEntrada() {
+            
+            if (ultimoCampoSeleccionado.Equals(campoSeleccionado)) {
+                return;
+            }
+            ultimoCampoSeleccionado = campoSeleccionado;
+            Rect posCampo = new Rect(0, 0, 0, 0);
+            switch (ultimoCampoSeleccionado) {
+                case "campoTexto": { EntradaWindows8.SetTextoActual(ref campo);
+                                        posCampo = posTexto;
+                                        break; }
+                    default: EntradaWindows8.SetTextoActual(); break;
+            }
+
+            if (!ultimoCampoSeleccionado.Equals(""))
+            {
+                if (!EntradaWindows8.ElTecladoEstaActivo)
+                {
+                    EntradaWindows8.mostrar(posCampo.x, posCampo.y, posCampo.width, posCampo.height);
+                }
+            }
+            else {
+                    EntradaWindows8.cerrarElTeclado();
+             
+            }
+            
+            
+        }
+
 		// Upis called once per frame
 		void Update ()
 		{
 			if (menuDeIdioma.enabled) {
 				return;
 			}
+            actualizarEntrada();
 
 			if (carga) {
 			}
 		}
+
+        Rect posTexto = new Rect(200, 0, 300, 20);
 
 		void OnGUI ()
 		{
 			if (menuDeIdioma.enabled) {
 				return;
 			}
-			GUI.DrawTexture (posFondo, texturaFondo);
+
+			//GUI.DrawTexture (posFondo, texturaFondo);
 
 			//botones musica
 			GUI.BeginGroup (posBotonesAudio);
@@ -95,18 +133,25 @@ namespace Menu
 				configuracionGeneral.estaLaMusicaActiva = !configuracionGeneral.estaLaMusicaActiva;
 			}
 			GUI.EndGroup ();
-
+            GUI.SetNextControlName("campoTexto");
+            campo = GUI.TextField(posTexto,campo);
+            
 			GUILayout.BeginArea (posMenuCentral, estiloMenu.box);
+
 			GUILayout.BeginVertical ();
+            
 			if (GUILayout.Button (traduccion.GetTextValue ("menuprincipalnuevaaventura"), estiloBotonMenuCentral)) {
-				LevelLoader.CargarNivel(primerNivel);
+				//LevelLoader.CargarNivel(primerNivel);
 				
 			}
 			if (GUILayout.Button(traduccion.GetTextValue("menuprincipalnuevaidioma"),estiloBotonMenuCentral)){
 				menuDeIdioma.enabled=true;
+				menuDeIdioma.puedeCerrar=true;
 			}
 			GUILayout.EndVertical ();
 			GUILayout.EndArea ();
+            campoSeleccionado = GUI.GetNameOfFocusedControl();
+
 		}
 
 	}

@@ -51,17 +51,19 @@ public class LevelLoader : MonoBehaviour {
 
 			posScreenImages = new Rect[Mathf.CeilToInt(Screen.width/(float)ScreenImage.width)];
 			//int posximagenes = Mathf.Min(0,Screen.height-ScreenImage.height-350);
+			int alturaImagenes = (Screen.height-ScreenImage.height)/2;
 			for(int i=0;i<posScreenImages.Length;i++){
-				posScreenImages[i]= new Rect((i*ScreenImage.width),0,ScreenImage.width,ScreenImage.height);
+				posScreenImages[i]= new Rect((i*ScreenImage.width),alturaImagenes,ScreenImage.width,ScreenImage.height);
 			}
 
 			Vector2 tam = estilo.label.CalcSize(new GUIContent(LanguageManager.Instance.GetTextValue("pantallacargaprincipal")));
-			posTexto = new Rect(20,posScreenImages[0].center.y,tam.x*2,tam.y);
+			posTexto = new Rect(20,posScreenImages[0].yMin-tam.y,tam.x*2,tam.y);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
+
 	}
 
 		static public void CargarNivel(string nombre){

@@ -3,7 +3,6 @@ using System.Collections;
 using ataque;
 using System;
 
-[RequireComponent(typeof(InputWrapper))]
 public class controlador_jugador : MonoBehaviour {
 
 	public float VelocidadMaxima=10f;
@@ -13,7 +12,7 @@ public class controlador_jugador : MonoBehaviour {
 
 	AtaqueBase ataque1;
 	AtaqueBase ataque2;
-
+    
 
 	InputWrapper entradaAlternativa;
 
@@ -54,7 +53,10 @@ public class controlador_jugador : MonoBehaviour {
 
 	void entrada(){
 
-		float velRel = entradaAlternativa.Horizontal;
+		float velRel = 0;
+		if (entradaAlternativa!=null){
+			velRel= entradaAlternativa.Horizontal;
+		}
 		if (velRel == 0) {
 			velRel=Input.GetAxis ("Horizontal");		
 		}
@@ -70,9 +72,9 @@ public class controlador_jugador : MonoBehaviour {
 		} 
 
 
-		if (Input.GetAxis ("disparar1") > 0 || entradaAlternativa.getDisparar(0)) {
+		if (Input.GetAxis ("disparar1") > 0 || (entradaAlternativa!=null && entradaAlternativa.getDisparar(0))) {
 			ataque1.Disparar();
-		}else if (Input.GetAxis ("disparar2") > 0 || entradaAlternativa.getDisparar(1)){
+		}else if (Input.GetAxis ("disparar2") > 0 || (entradaAlternativa!=null && entradaAlternativa.getDisparar(1))){
 			ataque2.Disparar();
 		}
 
@@ -82,7 +84,7 @@ public class controlador_jugador : MonoBehaviour {
 		}
 		bool vaASaltar=false;
 		float jump = Input.GetAxis ("Jump");
-		if (jump > 0 || entradaAlternativa.Jump>0) {
+		if (jump > 0 || (entradaAlternativa!=null && entradaAlternativa.Jump>0)) {
 			Saltar();
 			vaASaltar=true;
 		}

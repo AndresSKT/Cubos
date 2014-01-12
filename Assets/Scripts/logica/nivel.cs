@@ -17,6 +17,7 @@ public class nivel : MonoBehaviour {
 	public Texture texturaMana;
 	public Texture fondoBarra;
 	public string MenuPrincipal="MenuPrincipal";
+	public bool ReiniciarPuntajeAnterior=true;
 
 
 	int _puntaje=0;
@@ -80,6 +81,7 @@ public class nivel : MonoBehaviour {
 	#endregion
 
 	private bool _haFinalizado;
+	private int ObjetivoNoCumplidos=0;
 
 	public bool haFinalizado{
 		get {
@@ -119,16 +121,22 @@ public class nivel : MonoBehaviour {
 		labelinit ();
 	
 		objetivos = gameObject.GetComponents<Objetivo> ();
+		foreach(Objetivo o in objetivos){
+			if (!o.ObjetivoCumplido()){
+				ObjetivoNoCumplidos++;
+			}
+			o.HaCumplidoElObjetivo+=alFinalizarUnObjetivo;
+		}
+
+		if (ReiniciarPuntajeAnterior){
+			Herramientas.DatosEntreNiveles.ReiniciarPuntaje();
+		}
+		Puntaje = Herramientas.DatosEntreNiveles.Puntaje;
 	}
 
 
 	public bool todosLosObjetivosEstanCumplidos(){
-		foreach (Objetivo obj in objetivos) {
-			if (!obj.ObjetivoCumplido()){
-				return false;
-			}
-		}
-		return true;
+		return ObjetivoNoCumplidos<=0;
 	}
 
 	void labelinit(){
@@ -237,6 +245,14 @@ public class nivel : MonoBehaviour {
 
 	public bool elJugadorPuedeAvanzar{
 		get {return HayMasNiveles && (vidaJugador!=null && vidaJugador.estaVivo);}
+	}
+
+	void alFinalizarUnObjetivo(Objetivo o){
+		ObjetivoNoCumplidos--;
+	}
+
+	public void AlmacenarPuntajeEnDatos(){
+		Herramientas.DatosEntreNiveles.Puntaje=Puntaje;
 	}
 
 }
