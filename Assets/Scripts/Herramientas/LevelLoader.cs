@@ -72,6 +72,7 @@ public class LevelLoader : MonoBehaviour {
 				vacio.AddComponent<LevelLoader>();
 				//instancia = vacio.GetComponent<LevelLoader>();
 			}
+            Sonido.DetenerBackground();
 			Application.LoadLevel(nombre);
 		}
 

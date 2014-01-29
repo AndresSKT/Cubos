@@ -7,16 +7,20 @@ public class checkIsGrounded : MonoBehaviour
 	public string[] CapasDelSuelo = {"suelo"};
 	Vector3 upward = Vector3.up;
 	controlador_jugador controlador;
+	private float lastCollisionTime=0;
 
 	void Start ()
 	{
 		controlador = gameObject.GetComponent<controlador_jugador> ();
+		lastCollisionTime=Time.time;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate ()
 	{
-		bool tocando = false;
+		if (Time.time-lastCollisionTime>Time.fixedDeltaTime){
+			controlador.pisandoElSuelo=false;
+		}
 		upward = Vector3.up;
 	}
 
@@ -30,6 +34,7 @@ public class checkIsGrounded : MonoBehaviour
 							upward = p.normal;
 							controlador.pisandoElSuelo = true;
 							controlador.upVector = p.normal;
+							lastCollisionTime=Time.time;
 							break;
 						}
 					}
@@ -50,6 +55,7 @@ public class checkIsGrounded : MonoBehaviour
 					upward = p.normal;
 					controlador.pisandoElSuelo = true;
 					controlador.upVector = p.normal;
+					lastCollisionTime=Time.time;
 					break;
 				}
 					}

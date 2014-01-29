@@ -29,4 +29,11 @@ public class mana : MonoBehaviour {
 		}
 		return false;
 	}
+
+	public void AnadirMana(int masMana){
+		manaActual+=masMana;
+		if (manaActual>this.maxMana){
+			this.manaActual=maxMana;
+		}
+	}
 }

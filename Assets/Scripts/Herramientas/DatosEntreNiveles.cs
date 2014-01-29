@@ -8,7 +8,8 @@ namespace Herramientas{
 		static private DatosEntreNiveles _instancia=null;
 
 		private int _puntaje=0;
-
+		private int _vida=0;
+		private float _mana=0;
 
 		public static DatosEntreNiveles Instancia{
 			get{
@@ -46,6 +47,20 @@ namespace Herramientas{
 					Instancia._puntaje=0;
 				}
 			}
+		}
+
+		public static int Vida{
+			get {
+				return Instancia._vida;
+			}set{
+				_instancia._vida=value;
+			}
+		}
+
+		public static float Mana{
+			get{ return Instancia._mana;}
+			set {Instancia._mana=value;}
+
 		}
 
 		public static void ReiniciarPuntaje(){

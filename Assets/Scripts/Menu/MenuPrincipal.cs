@@ -6,38 +6,43 @@ using Herramientas;
 
 namespace Menu
 {
-	[RequireComponent(typeof(SeleccionDeIdioma))]
+	[RequireComponent(typeof(SeleccionDeIdioma)),RequireComponent(typeof(VerPuntajes))]
 	public class MenuPrincipal : MonoBehaviour
 	{
 
-		string campo="******";
-
+		
 
 		public GUISkin estiloMenu;
 		public float anchoMenuCentral = 600;
 		public string primerNivel="";
+        public Texture2D texturaFondo;
+        
+        public Texture2D logo;
 
 		Rect posMenuCentral;
 		Rect posBotonesAudio;
 		Rect posBotonSonido;
 		Rect posBotonMusica;
 		Rect posFondo;
+        Rect coordFondo;
+        Rect posLogo;
 		GUIStyle estiloBotonMusicaOff;
 		GUIStyle estiloBotonMusicaOn;
 		GUIStyle estiloBotonSonidoOff;
 		GUIStyle estiloBotonSonidoOn;
-		Texture2D texturaFondo;
-		bool carga = false;
+		
+        bool carga = false;
 		GUIStyle estiloBotonMenuCentral;
 		LanguageManager traduccion;
 		SeleccionDeIdioma menuDeIdioma;
+        VerPuntajes menuPuntajes;
 		
 		// Use this for initialization
-		void Start ()
+		void Awake ()
 		{
 			estiloBotonMenuCentral = estiloMenu.GetStyle ("boton_principal");
 
-			float altoMenuCentral = estiloBotonMenuCentral.CalcHeight (new GUIContent("Dummy"),float.MaxValue)*3;
+			float altoMenuCentral = estiloBotonMenuCentral.CalcHeight (new GUIContent("Dummy"),float.MaxValue)*4;
 			posMenuCentral = new Rect ((Screen.width - anchoMenuCentral) / 2,Mathf.Max((Screen.height-altoMenuCentral)/2,0), anchoMenuCentral, altoMenuCentral);
 
 			posBotonesAudio = new Rect (Screen.width - 160, 10, 160, 70);
@@ -47,20 +52,20 @@ namespace Menu
 			estiloBotonMusicaOn = estiloMenu.GetStyle ("boton_musica_on");
 			estiloBotonSonidoOff = estiloMenu.GetStyle ("boton_sonido_off");
 			estiloBotonSonidoOn = estiloMenu.GetStyle ("boton_sonido_on");
+            posLogo = new Rect((Screen.width - logo.width) / 2, 30, logo.width, logo.height);
+            
 
 			configuracionGeneral.Load ();
 			traduccion = LanguageManager.Instance;
 
 			menuDeIdioma = GetComponent<SeleccionDeIdioma> ();
 			menuDeIdioma.enabled = false;
+            menuPuntajes = GetComponent<VerPuntajes>();
+            menuPuntajes.enabled = false;
 		
 			posFondo = new Rect (0, 0, Screen.width, Screen.height);
-			texturaFondo = new Texture2D (1, 1);
-			texturaFondo.SetPixel (0, 0, Color.black);
-			texturaFondo.Apply ();
-
-
-			string idioma = configuracionGeneral.Idioma;
+            coordFondo = new Rect(1 - (Mathf.Min(texturaFondo.width, Screen.width) / (float)texturaFondo.width), 1 - (Mathf.Min(texturaFondo.height, Screen.height) / (float)texturaFondo.height), 1, 1);
+            string idioma = configuracionGeneral.Idioma;
 			if (idioma==null){
 				menuDeIdioma.enabled=true;
 				menuDeIdioma.puedeCerrar=false;
@@ -71,58 +76,28 @@ namespace Menu
 
 		}
 
-        string ultimoCampoSeleccionado = "";
-        string campoSeleccionado = "";
-        private void actualizarEntrada() {
-            
-            if (ultimoCampoSeleccionado.Equals(campoSeleccionado)) {
-                return;
-            }
-            ultimoCampoSeleccionado = campoSeleccionado;
-            Rect posCampo = new Rect(0, 0, 0, 0);
-            switch (ultimoCampoSeleccionado) {
-                case "campoTexto": { EntradaWindows8.SetTextoActual(ref campo);
-                                        posCampo = posTexto;
-                                        break; }
-                    default: EntradaWindows8.SetTextoActual(); break;
-            }
-
-            if (!ultimoCampoSeleccionado.Equals(""))
-            {
-                if (!EntradaWindows8.ElTecladoEstaActivo)
-                {
-                    EntradaWindows8.mostrar(posCampo.x, posCampo.y, posCampo.width, posCampo.height);
-                }
-            }
-            else {
-                    EntradaWindows8.cerrarElTeclado();
-             
-            }
-            
-            
-        }
-
 		// Upis called once per frame
 		void Update ()
 		{
-			if (menuDeIdioma.enabled) {
+			if (menuDeIdioma.enabled || menuPuntajes.enabled) {
 				return;
 			}
-            actualizarEntrada();
+            
 
 			if (carga) {
 			}
 		}
 
-        Rect posTexto = new Rect(200, 0, 300, 20);
-
+        
 		void OnGUI ()
 		{
-			if (menuDeIdioma.enabled) {
+			if (menuDeIdioma.enabled || menuPuntajes.enabled) {
 				return;
 			}
 
-			//GUI.DrawTexture (posFondo, texturaFondo);
+			GUI.DrawTextureWithTexCoords(posFondo, texturaFondo,coordFondo);
+
+            GUI.DrawTexture(posLogo, logo);
 
 			//botones musica
 			GUI.BeginGroup (posBotonesAudio);
@@ -133,24 +108,27 @@ namespace Menu
 				configuracionGeneral.estaLaMusicaActiva = !configuracionGeneral.estaLaMusicaActiva;
 			}
 			GUI.EndGroup ();
-            GUI.SetNextControlName("campoTexto");
-            campo = GUI.TextField(posTexto,campo);
             
-			GUILayout.BeginArea (posMenuCentral, estiloMenu.box);
+            GUILayout.BeginArea (posMenuCentral, estiloMenu.box);
 
 			GUILayout.BeginVertical ();
             
 			if (GUILayout.Button (traduccion.GetTextValue ("menuprincipalnuevaaventura"), estiloBotonMenuCentral)) {
-				//LevelLoader.CargarNivel(primerNivel);
+				LevelLoader.CargarNivel(primerNivel);
 				
 			}
 			if (GUILayout.Button(traduccion.GetTextValue("menuprincipalnuevaidioma"),estiloBotonMenuCentral)){
 				menuDeIdioma.enabled=true;
 				menuDeIdioma.puedeCerrar=true;
 			}
+            if (GUILayout.Button(traduccion.GetTextValue("menuprincipalverpuntajes"),estiloBotonMenuCentral))
+            {
+                menuPuntajes.enabled = true;
+            }
+
 			GUILayout.EndVertical ();
 			GUILayout.EndArea ();
-            campoSeleccionado = GUI.GetNameOfFocusedControl();
+            
 
 		}
 

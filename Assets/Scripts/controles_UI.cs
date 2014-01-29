@@ -18,7 +18,7 @@ public class controles_UI :InputWrapper {
 
 
 
-	public int alturaBotones=72;
+	public int alturaBotones=100;
 	float margenInferior=10;
 	Rect grupoBotonesDisparar;
 	Pausa menuPausa;
@@ -33,8 +33,8 @@ public class controles_UI :InputWrapper {
 
 		}
 
-		FlechaIzquierda.posicion = new Rect(20,0,alturaBotones,alturaBotones);
-		FlechaDerecha.posicion = new Rect(100,0,alturaBotones,alturaBotones);
+		FlechaIzquierda.posicion = new Rect(30,10,alturaBotones,alturaBotones);
+		FlechaDerecha.posicion = new Rect(130,10,alturaBotones,alturaBotones);
 		Saltar.posicion = new Rect(0,0,alturaBotones,alturaBotones);
 
 		FlechaIzquierda.posicion.y = Screen.height - (FlechaIzquierda.posicion.height + margenInferior);

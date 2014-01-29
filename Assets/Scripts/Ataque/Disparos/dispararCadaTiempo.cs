@@ -30,7 +30,7 @@ public class dispararCadaTiempo : AtaqueBase {
 	void Update () {
 
 	}
-		public bool PuedeDisparar{
+		public new bool PuedeDisparar{
 			get{
 				return !(Time.time - ultimaBala < tiempoEntreBalas);
 			}

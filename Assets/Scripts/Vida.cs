@@ -56,6 +56,13 @@ public class Vida : MonoBehaviour {
 			}
 	}
 
+		public void anadirVida(int vida){
+			this.vida+=vida;
+			if (this.vida>this.vidaMaxima){
+				this.vida=vidaMaxima;
+			}
+		}
+
 	
 		
 	void OnDestroy(){

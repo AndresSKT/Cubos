@@ -52,11 +52,13 @@ public class Pausa : MonoBehaviour {
 	public void pausar(){
 		_estaEnPausa=true;
 		Time.timeScale=0;
+        Sonido.PausarBackGround();
 	}
 
 	public void continuar(){
 		_estaEnPausa=false;
 		Time.timeScale=escalaDeTiempoOriginal;
+        Sonido.continuarBackground();
 	}
 
 	void Start () {

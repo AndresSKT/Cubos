@@ -18,6 +18,9 @@ public class nivel : MonoBehaviour {
 	public Texture fondoBarra;
 	public string MenuPrincipal="MenuPrincipal";
 	public bool ReiniciarPuntajeAnterior=true;
+	public bool ReiniciarVidaAnterior=true;
+	public bool ReiniciarManaAnterior=true;
+    public AudioClip audioDeFondo;
 
 
 	int _puntaje=0;
@@ -131,7 +134,22 @@ public class nivel : MonoBehaviour {
 		if (ReiniciarPuntajeAnterior){
 			Herramientas.DatosEntreNiveles.ReiniciarPuntaje();
 		}
+
+
 		Puntaje = Herramientas.DatosEntreNiveles.Puntaje;
+
+		if (!ReiniciarManaAnterior && jugador!=null){
+			jugador.GetComponent<mana>().manaActual=Herramientas.DatosEntreNiveles.Mana;
+		}
+
+		if (!ReiniciarVidaAnterior && jugador!=null){
+			jugador.GetComponent<Vida>().vida=Herramientas.DatosEntreNiveles.Vida;
+		}
+
+        if (audioDeFondo != null) {
+            Sonido.PlayBackgroundInLoop(audioDeFondo);
+        }
+
 	}
 
 
@@ -175,7 +193,10 @@ public class nivel : MonoBehaviour {
 		bool fintmp=todosLosObjetivosEstanCumplidos();
 		if (fintmp && !haFinalizado){
 			deshabilitarAlJugador();
-			HaFinalizadoElNivel(Puntaje);
+            if (HaFinalizadoElNivel != null)
+            {
+                HaFinalizadoElNivel(Puntaje);
+            }
 		}
 		haFinalizado=fintmp;
 	}
@@ -205,7 +226,10 @@ public class nivel : MonoBehaviour {
 	}
 
 	public void jugadorMurio(){
-		ELJugadorHaPerdidoElNivel(Puntaje);
+        if (ELJugadorHaPerdidoElNivel != null)
+        {
+            ELJugadorHaPerdidoElNivel(Puntaje);
+        }
 	}
 
 	public void setJugador(GameObject JUG){
@@ -226,6 +250,7 @@ public class nivel : MonoBehaviour {
 	}
 
 	public void reiniciarNivel(){
+        
 		Herramientas.LevelLoader.CargarNivel(Application.loadedLevelName);
 	}
 
@@ -251,8 +276,12 @@ public class nivel : MonoBehaviour {
 		ObjetivoNoCumplidos--;
 	}
 
-	public void AlmacenarPuntajeEnDatos(){
+	public void AlmacenarDatos(){
 		Herramientas.DatosEntreNiveles.Puntaje=Puntaje;
+		if (jugador!=null){
+			Herramientas.DatosEntreNiveles.Mana=jugador.GetComponent<mana>().manaActual;
+			Herramientas.DatosEntreNiveles.Vida=jugador.GetComponent<Vida>().vida;
+		}
 	}
 
 }

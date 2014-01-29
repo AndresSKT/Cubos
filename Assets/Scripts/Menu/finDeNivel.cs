@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Menu;
+
 
 
 [RequireComponent(typeof(nivel))]
 [RequireComponent(typeof(Pausa))]
+[RequireComponent(typeof(Menu.GuardarPuntaje))]
 public class finDeNivel : MonoBehaviour {
 
 	public GUISkin estilo;
@@ -15,7 +18,7 @@ public class finDeNivel : MonoBehaviour {
 	nivel instNivel;
 	Rect posFondo;
 	Rect posPanelPrincipal;
-
+    private Menu.GuardarPuntaje instGuardarPuntaje;
 
 	private bool ejecutando=false;
 	GUIStyle estiloLabelScoreName;
@@ -43,11 +46,16 @@ public class finDeNivel : MonoBehaviour {
 		estiloBotonCancelar = estilo.GetStyle("boton_cancelar");
 
 		posPanelPrincipal = new Rect((Screen.width-anchoPanelPrincipal)/2,(Screen.height-altoPanelPrincipal)/2,anchoPanelPrincipal,altoPanelPrincipal);
-
+        instGuardarPuntaje = GetComponent<GuardarPuntaje>();
+        if (instGuardarPuntaje == null) {
+            this.gameObject.AddComponent<GuardarPuntaje>();
+            instGuardarPuntaje = GetComponent<GuardarPuntaje>();
+            instGuardarPuntaje.Init(this.estilo);
+        }
+        instGuardarPuntaje.enabled = false;
 	}
 
 	void OnEnable(){
-
 
 	}
 
@@ -61,7 +69,7 @@ public class finDeNivel : MonoBehaviour {
 	}
 
 	void OnGUI(){
-		if(!ejecutando){return;}
+		if(!ejecutando || instGuardarPuntaje.enabled){return;}
 		GUI.DrawTexture(posFondo,texturaFondo);
 		GUILayout.BeginArea(posPanelPrincipal,estilo.box);
 		GUILayout.BeginVertical();
@@ -70,13 +78,24 @@ public class finDeNivel : MonoBehaviour {
 		GUILayout.Label(instNivel.Puntaje+"",estiloScore);
 		GUILayout.EndVertical();
 		GUILayout.FlexibleSpace();
-		if (instNivel.elJugadorPuedeAvanzar){
-			if (GUILayout.Button(LanguageManager.Instance.GetTextValue("menufinEscenaSiguiente"),estiloBotonPrincipal,GUILayout.MaxHeight(50))){
-				instNivel.AlmacenarPuntajeEnDatos();
-				Herramientas.LevelLoader.CargarNivel(instNivel.siguienteNivel);
-			}
-		}
-		if (GUILayout.Button(LanguageManager.Instance.GetTextValue("menupausareiniciar"),estiloBotonCancelar,GUILayout.MaxHeight(50))){
+        if (instNivel.elJugadorPuedeAvanzar)
+        {
+            if (GUILayout.Button(LanguageManager.Instance.GetTextValue("menufinEscenaSiguiente"), estiloBotonPrincipal, GUILayout.MaxHeight(50)))
+            {
+                instNivel.AlmacenarDatos();
+                Herramientas.LevelLoader.CargarNivel(instNivel.siguienteNivel);
+            }
+        }
+        else {
+            if (!instGuardarPuntaje.HaGuardado && GUILayout.Button(LanguageManager.Instance.GetTextValue("menufinEscenaGuardar"), estiloBotonPrincipal, GUILayout.MaxHeight(50)))
+            {
+                
+                instGuardarPuntaje.enabled = true;
+                instGuardarPuntaje.Puntaje = instNivel.Puntaje;
+            }
+        }
+        if (!instGuardarPuntaje.HaGuardado && GUILayout.Button(LanguageManager.Instance.GetTextValue("menupausareiniciar"), estiloBotonCancelar, GUILayout.MaxHeight(50)))
+        {
 			instNivel.reiniciarNivel();
 		}
 
@@ -90,5 +109,6 @@ public class finDeNivel : MonoBehaviour {
 
 	void OnNivelFinalizado(int puntaje){
 		ejecutando=true;
+        Sonido.PausarBackGround();
 	}
 }
