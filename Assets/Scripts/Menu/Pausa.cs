@@ -57,7 +57,6 @@ public class Pausa : MonoBehaviour {
 
 	public void continuar(){
 		Time.timeScale=escalaDeTiempoOriginal;
-		Debug.Log(escalaDeTiempoOriginal);
 		Sonido.continuarBackground();
 		_estaEnPausa=false;
 

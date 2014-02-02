@@ -2,7 +2,10 @@ fileFormatVersion: 2
 guid: dea22896011c14e439bb067d2c146f2e
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - estiloMenu: {fileID: 11400000, guid: 2f627a1786c4bae4894d894b37fb09bd, type: 2}
+  - texturaFondo: {instanceID: 0}
+  - logo: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
