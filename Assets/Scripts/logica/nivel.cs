@@ -4,7 +4,6 @@ using Configuracion;
 using Logica.Objetivos;
 using vida;
 
-
 public class nivel : MonoBehaviour {
 
 	public delegate void finDelNivelHandler(int puntaje);
@@ -269,7 +268,9 @@ public class nivel : MonoBehaviour {
 	}
 
 	public bool elJugadorPuedeAvanzar{
-		get {return HayMasNiveles && (vidaJugador!=null && vidaJugador.estaVivo);}
+		get {
+			return HayMasNiveles && (vidaJugador!=null && vidaJugador.estaVivo);
+		}
 	}
 
 	void alFinalizarUnObjetivo(Objetivo o){

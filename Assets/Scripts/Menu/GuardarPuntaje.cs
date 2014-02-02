@@ -108,13 +108,7 @@ namespace Menu
 			
         }
 
-        void Update() {
-            if (CampoNombre.Text.Length > logitudMaximaDelNombre)
-            {
-                CampoNombre.Text = CampoNombre.Text.Substring(0, logitudMaximaDelNombre);
-            }
-
-        }
+        
 
         void OnGUI() {
             GUI.depth = 0;
@@ -135,7 +129,11 @@ namespace Menu
             GUI.SetNextControlName("campo_nombre");
             //valorTxtNombre = GUILayout.TextField(valorTxtNombre,estilo.textField);
             CampoNombre.DrawUsingGUILayout(estilo.textField);
-            
+			if (CampoNombre.Text.Length > logitudMaximaDelNombre)
+			{
+				CampoNombre.Text = CampoNombre.Text.Substring(0, logitudMaximaDelNombre);
+			}
+
             GUILayout.EndVertical();
             GUILayout.EndArea();
             GUILayout.FlexibleSpace();

@@ -56,14 +56,15 @@ public class Pausa : MonoBehaviour {
 	}
 
 	public void continuar(){
-		_estaEnPausa=false;
 		Time.timeScale=escalaDeTiempoOriginal;
-        Sonido.continuarBackground();
+		Debug.Log(escalaDeTiempoOriginal);
+		Sonido.continuarBackground();
+		_estaEnPausa=false;
+
 	}
 
 	void Start () {
 		Vector2 tamtmp= new Vector2();
-		escalaDeTiempoOriginal=Time.timeScale;
 		estiloBotonPrincipal = estilo.GetStyle("boton_principal");
 		estiloBotonVolverAlMenuPrincipal=estilo.GetStyle("boton_cancelar");
 		posBotonPausa = new Rect(Screen.width-64-10,10,64,64);

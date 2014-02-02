@@ -44,9 +44,6 @@ namespace Logica.Objetivos
 			Vida tmpvida = objeto.GetComponent<Vida> ();
 			if (tmpvida != null) {
 				tmpvida.estaMueriendo -= ObjetivoEstaMuriendo;
-				if (motivo == motivoDeMuerte.SinVida){
-					logicalDelNivel.anadirPuntos(tmpvida.PuntosDeRecompensaAlMorir);
-				}
 				aMatar.Remove (objeto);
 			}
 			if (aMatar.Count==0){

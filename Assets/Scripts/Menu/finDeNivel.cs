@@ -20,7 +20,6 @@ public class finDeNivel : MonoBehaviour {
 	Rect posPanelPrincipal;
     private Menu.GuardarPuntaje instGuardarPuntaje;
 
-	private bool ejecutando=false;
 	GUIStyle estiloLabelScoreName;
 	GUIStyle estiloScore;
 	GUIStyle estiloBotonCancelar;
@@ -53,14 +52,15 @@ public class finDeNivel : MonoBehaviour {
             instGuardarPuntaje.Init(this.estilo);
         }
         instGuardarPuntaje.enabled = false;
+		this.enabled=false;
 	}
 
 	void OnEnable(){
-
+		Time.timeScale=0;
 	}
 
 	void OnDisable(){
-
+		Time.timeScale=1;
 	}
 
 	// Update is called once per frame
@@ -69,7 +69,7 @@ public class finDeNivel : MonoBehaviour {
 	}
 
 	void OnGUI(){
-		if(!ejecutando || instGuardarPuntaje.enabled){return;}
+		if(instGuardarPuntaje.enabled){return;}
 		GUI.DrawTexture(posFondo,texturaFondo);
 		GUILayout.BeginArea(posPanelPrincipal,estilo.box);
 		GUILayout.BeginVertical();
@@ -108,7 +108,9 @@ public class finDeNivel : MonoBehaviour {
 	}
 
 	void OnNivelFinalizado(int puntaje){
-		ejecutando=true;
-        Sonido.PausarBackGround();
+		if (this!=null){
+			this.enabled=true;
+			Sonido.PausarBackGround();
+		}
 	}
 }

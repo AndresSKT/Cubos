@@ -41,7 +41,7 @@ public class Vida : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		if (vida <= 0) {
 			motivoAlMorir=motivoDeMuerte.SinVida;
 			Destroy(this.gameObject);

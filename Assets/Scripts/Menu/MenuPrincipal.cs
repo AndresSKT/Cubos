@@ -83,9 +83,6 @@ namespace Menu
 				return;
 			}
             
-
-			if (carga) {
-			}
 		}
 
         

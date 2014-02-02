@@ -15,7 +15,7 @@ public class mana : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		manaActual+=manaRecuperadaPorSegundo*Time.deltaTime;
 		if (manaActual>maxMana){
 			manaActual=maxMana;

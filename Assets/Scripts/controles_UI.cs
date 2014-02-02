@@ -2,7 +2,6 @@
 using System.Collections;
 using TouchScript;
 
-[RequireComponent(typeof(TouchManager))]
 public class controles_UI :InputWrapper {
 
 
@@ -19,7 +18,7 @@ public class controles_UI :InputWrapper {
 
 
 	public int alturaBotones=100;
-	float margenInferior=10;
+	float margenInferior=30;
 	Rect grupoBotonesDisparar;
 	Pausa menuPausa;
 	TouchManager entradaTouch;
@@ -34,7 +33,7 @@ public class controles_UI :InputWrapper {
 		}
 
 		FlechaIzquierda.posicion = new Rect(30,10,alturaBotones,alturaBotones);
-		FlechaDerecha.posicion = new Rect(130,10,alturaBotones,alturaBotones);
+		FlechaDerecha.posicion = new Rect(FlechaIzquierda.posicion.width*2,10,alturaBotones,alturaBotones);
 		Saltar.posicion = new Rect(0,0,alturaBotones,alturaBotones);
 
 		FlechaIzquierda.posicion.y = Screen.height - (FlechaIzquierda.posicion.height + margenInferior);
@@ -48,7 +47,7 @@ public class controles_UI :InputWrapper {
 		Disparar2.posicion = new Rect(grupoBotonesDisparar.x+((alturaBotones+margenInferior)*2),grupoBotonesDisparar.y,alturaBotones,alturaBotones);
 
 
-		entradaTouch = GetComponent<TouchManager> ();
+		entradaTouch = TouchManager.Instance;
 
 	}
 	
@@ -66,34 +65,47 @@ public class controles_UI :InputWrapper {
 		Jump = 0;
 		Disparar [0] = false;
 		Disparar [1] = false;
-		FlechaDerecha.ishover = false;
-		FlechaIzquierda.ishover = false;
-		Saltar.ishover = false;
-		Disparar1.ishover = false;
-		Disparar2.ishover = false;
+		bool tmoFlechaDerecha = false;
+		bool tmoFlechaIzquierda = false;
+		bool tmoSaltar = false;
+		bool tmoDisparar1 = false;
+		bool tmoDisparar2 = false;
+
 		Vector2 posicion = new Vector2 ();
 		foreach (TouchPoint dedo in entradaTouch.TouchPoints) {
 			posicion.x = dedo.Position.x;
 			posicion.y = Screen.height - dedo.Position.y;
-			checkHover (FlechaIzquierda, posicion);
-			checkHover (FlechaDerecha, posicion);
-			checkHover (Saltar, posicion);
-			checkHover (Disparar1, posicion);
-			checkHover (Disparar2, posicion);
+			if (checkHover (FlechaIzquierda, posicion)){
+				tmoFlechaIzquierda=true;
+			}
+			if (checkHover (FlechaDerecha, posicion)){
+				tmoFlechaDerecha=true;
+			}
+			if (checkHover (Saltar, posicion)){
+				tmoSaltar=true;
+			}
+			if (checkHover (Disparar1, posicion)){
+				tmoDisparar1=true;
+			}
+			if (checkHover (Disparar2, posicion)){
+				tmoDisparar2=true;
+			}
 		}
-		/*
-		if (Input.GetKey (KeyCode.Mouse0) || Input.GetKey (KeyCode.Mouse1)) {
-			Vector2 posmouse = new Vector2 (Input.mousePosition.x,Screen.height-Input.mousePosition.y);
-			checkHover (FlechaIzquierda, posmouse);
-			checkHover (FlechaDerecha, posmouse);
-			checkHover (Saltar, posmouse);
-		}*/if (FlechaIzquierda.ishover) {
+
+		FlechaDerecha.ishover = tmoFlechaDerecha;
+		FlechaIzquierda.ishover = tmoFlechaIzquierda;
+		Saltar.ishover = tmoSaltar;
+		Disparar1.ishover = tmoDisparar1;
+		Disparar2.ishover = tmoDisparar2;
+
+
+		if (FlechaIzquierda.ishover) {
 			_horizontal -= 1;
 		}
 		if (FlechaDerecha.ishover) {
 			_horizontal += 1;
 		}
-		if (Saltar.ishover) {
+		if (Saltar.firstClick) {
 			_jump = 1;
 		}
 		if (Disparar1.ishover) {
@@ -127,12 +139,11 @@ public class controles_UI :InputWrapper {
 		GUI.color=colOriginal;
 	}
 
-	public void checkHover(botonUI boton, Vector2 posicion){
-		if (boton.posicion.Contains (posicion)) {
-			boton.ishover=true;
-			return;
-		}
+	public bool checkHover(botonUI boton, Vector2 posicion){
+		return  boton.posicion.Contains (posicion);
+		
 	}
+
 
 	[System.Serializable]
 	public class botonUI {
@@ -142,16 +153,30 @@ public class controles_UI :InputWrapper {
 		public Color hoverColor;
 
 
+		private bool _ishover=false;
+
+		public bool ishover{
+			get {return _ishover;}
+			set {
+				if (value){
+					firstClick=!_ishover;
+
+				}else{
+					firstClick=false;
+				}
+				_ishover=value;
+			}
+		}
+
 		[HideInInspector]
-		public bool ishover=false;
+		public bool firstClick=false;
+
 
 		[HideInInspector]
 		public Rect posicion;
 
 		public Texture Texture{
 			get{
-
-
 				if (ishover){
 					return hover;
 				}

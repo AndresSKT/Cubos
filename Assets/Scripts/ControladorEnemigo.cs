@@ -24,20 +24,25 @@ public class ControladorEnemigo : MonoBehaviour {
 	void Start () {
 		posicionOriginal = new Vector2 (transform.position.x, transform.position.y);
 		animacion = GetComponent<Animator> ();
+		this.enabled=false;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
+		if (!this.enabled){return;}
 		if (!seMueve) {
 			return;
 		}
+		bool fliped=false;
 		if ((miraAlaDerecha && Mathf.Abs (transform.position.x - posicionOriginal.x) >= distanciaALaDerecha && transform.position.x - posicionOriginal.x>0) ||
 		    (!miraAlaDerecha && Mathf.Abs (transform.position.x - posicionOriginal.x) >= distanciaALaIzquierda && transform.position.x - posicionOriginal.x<0)) {
 			flip();
+			fliped=true;
 		}
 		rigidbody2D.velocity = new Vector2 (velocidad*(miraAlaDerecha?1:-1), rigidbody2D.velocity.y);
-		animacion.SetFloat ("velocidad", velocidad);
-
+		if (fliped){
+			animacion.SetFloat ("velocidad", velocidad);
+		}
 	}
 
 	void flip(){
@@ -64,7 +69,9 @@ public class ControladorEnemigo : MonoBehaviour {
 		}
 	}
 
+
 	void OnCollisionStay2D(Collision2D col){
+		if (!this.enabled){return;}
 		if (col.gameObject.CompareTag ("Player")) {
 			atacarJugador(col.gameObject);
 		}
@@ -76,5 +83,13 @@ public class ControladorEnemigo : MonoBehaviour {
 		Vida cont = jug.GetComponent<Vida>();
 		cont.aplicarDaño(daño);
 
+	}
+
+	void OnBecameVisible(){
+		enabled=true;
+	}
+
+	void OnBecameInvisible(){
+		enabled=false;
 	}
 }

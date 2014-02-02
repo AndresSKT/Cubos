@@ -10,7 +10,10 @@ public abstract class Objetivo : MonoBehaviour {
 	public abstract bool ObjetivoCumplido ();
 
 		protected void OnHaCumplidoElObjetivo(Objetivo on){
-			HaCumplidoElObjetivo(on);
+			notificacionDeObjetivoHandler tmp = HaCumplidoElObjetivo;
+			if (tmp!=null){
+				HaCumplidoElObjetivo(on);
+			}
 		}
 
 	}

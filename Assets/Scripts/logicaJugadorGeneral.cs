@@ -51,7 +51,9 @@ public class logicaJugadorGeneral : logicaJugador {
 	}
 
 	void sumarPuntaje(int puntaje){
-		logica.anadirPuntos(puntaje);
+		if (logica!=null){
+			logica.anadirPuntos(puntaje);
+		}
 	}
 
 	void anadirVida(int vida){
