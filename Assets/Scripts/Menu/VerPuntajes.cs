@@ -37,12 +37,18 @@ namespace Menu
             estiloNombrePuntaje = estilo.GetStyle("label_nombre_puntuacion");
             estiloValorPuntaje = estilo.GetStyle("label_valor_puntuacion");
 
-            posBotonCerrar = new Rect(20, 20, 64, 64);
-            posFondo = new Rect(0, 0, Screen.width, Screen.height);
-            coordFondo = new Rect(1 - (Mathf.Min(texturaFondo.width, Screen.width) / (float)texturaFondo.width), 1 - (Mathf.Min(texturaFondo.height, Screen.height) / (float)texturaFondo.height), 1, 1);
-            posPanelCentral = new Rect((Screen.width - anchoPanelCentral) / 2, 80, anchoPanelCentral, altoPanelCentral);
             traductor = LanguageManager.Instance;
+			CambioTamanoVentanaWindowsStore.cambioTamanoPantalla+=RecalcularUI;
+			RecalcularUI(Screen.width,Screen.height);
         }
+
+		void RecalcularUI(int ancho, int alto){
+			posBotonCerrar = new Rect(20, 20, 64, 64);
+			posFondo = new Rect(0, 0, Screen.width, Screen.height);
+			coordFondo = new Rect(1 - (Mathf.Min(texturaFondo.width, Screen.width) / (float)texturaFondo.width), 1 - (Mathf.Min(texturaFondo.height, Screen.height) / (float)texturaFondo.height), 1, 1);
+			posPanelCentral = new Rect((Screen.width - anchoPanelCentral) / 2, 80, anchoPanelCentral, altoPanelCentral);
+
+		}
 
         void Start() {
             GenerarUI();
@@ -59,7 +65,7 @@ namespace Menu
         }
 
         void OnGUI() {
-            GUI.depth = 0;
+            GUI.depth = 1;
             GUI.DrawTextureWithTexCoords(posFondo, texturaFondo, coordFondo);
             if (GUI.Button(posBotonCerrar, "", estiloBotonAtras)) {
                 this.enabled = false;

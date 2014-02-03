@@ -23,6 +23,8 @@ public class controles_UI :InputWrapper {
 	Pausa menuPausa;
 	TouchManager entradaTouch;
 
+	
+
 
 	void Start () {
 		menuPausa = GameObject.FindObjectOfType<Pausa>();
@@ -32,22 +34,29 @@ public class controles_UI :InputWrapper {
 
 		}
 
+		entradaTouch = TouchManager.Instance;
+		CambioTamanoVentanaWindowsStore.cambioTamanoPantalla+=OnCambioResolusion;
+		OnCambioResolusion(Screen.width,Screen.height);
+
+
+	}
+
+	void OnCambioResolusion(int ancho, int alto){
 		FlechaIzquierda.posicion = new Rect(30,10,alturaBotones,alturaBotones);
 		FlechaDerecha.posicion = new Rect(FlechaIzquierda.posicion.width*2,10,alturaBotones,alturaBotones);
 		Saltar.posicion = new Rect(0,0,alturaBotones,alturaBotones);
-
+		
 		FlechaIzquierda.posicion.y = Screen.height - (FlechaIzquierda.posicion.height + margenInferior);
 		FlechaDerecha.posicion.y = Screen.height - (FlechaDerecha.posicion.height + margenInferior);
 		Saltar.posicion.y = Screen.height - (2*(Saltar.posicion.height + margenInferior));
 		Saltar.posicion.x = Screen.width - ((Saltar.posicion.width*2) + 30);
-
+		
 		grupoBotonesDisparar = new Rect(0,Saltar.posicion.yMax+margenInferior,(alturaBotones+margenInferior)*3,alturaBotones);
 		grupoBotonesDisparar.x = Saltar.posicion.center.x-(grupoBotonesDisparar.width/2);
 		Disparar1.posicion =  new Rect(grupoBotonesDisparar.x,grupoBotonesDisparar.y,alturaBotones,alturaBotones);
 		Disparar2.posicion = new Rect(grupoBotonesDisparar.x+((alturaBotones+margenInferior)*2),grupoBotonesDisparar.y,alturaBotones,alturaBotones);
-
-
-		entradaTouch = TouchManager.Instance;
+		
+		
 
 	}
 	

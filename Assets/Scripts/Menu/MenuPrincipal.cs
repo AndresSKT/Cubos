@@ -10,6 +10,7 @@ namespace Menu
 	public class MenuPrincipal : MonoBehaviour
 	{
 
+		private bool  aPantallaCompleta=false;
 		
 
 		public GUISkin estiloMenu;
@@ -19,6 +20,8 @@ namespace Menu
         
         public Texture2D logo;
 
+
+		private Texture2D texturaFondoMono;
 		Rect posMenuCentral;
 		Rect posBotonesAudio;
 		Rect posBotonSonido;
@@ -36,23 +39,18 @@ namespace Menu
 		LanguageManager traduccion;
 		SeleccionDeIdioma menuDeIdioma;
         VerPuntajes menuPuntajes;
-		
+
+		bool mustShowLanguage=false;
+
 		// Use this for initialization
 		void Awake ()
 		{
 			estiloBotonMenuCentral = estiloMenu.GetStyle ("boton_principal");
 
-			float altoMenuCentral = estiloBotonMenuCentral.CalcHeight (new GUIContent("Dummy"),float.MaxValue)*4;
-			posMenuCentral = new Rect ((Screen.width - anchoMenuCentral) / 2,Mathf.Max((Screen.height-altoMenuCentral)/2,0), anchoMenuCentral, altoMenuCentral);
-
-			posBotonesAudio = new Rect (Screen.width - 160, 10, 160, 70);
-			posBotonSonido = new Rect (0, 0, 70, 70);
-			posBotonMusica = new Rect (posBotonesAudio.width - 10 - 70, 0, 70, 70);
 			estiloBotonMusicaOff = estiloMenu.GetStyle ("boton_musica_off");
 			estiloBotonMusicaOn = estiloMenu.GetStyle ("boton_musica_on");
 			estiloBotonSonidoOff = estiloMenu.GetStyle ("boton_sonido_off");
 			estiloBotonSonidoOn = estiloMenu.GetStyle ("boton_sonido_on");
-            posLogo = new Rect((Screen.width - logo.width) / 2, 30, logo.width, logo.height);
             
 
 			configuracionGeneral.Load ();
@@ -63,15 +61,39 @@ namespace Menu
             menuPuntajes = GetComponent<VerPuntajes>();
             menuPuntajes.enabled = false;
 		
-			posFondo = new Rect (0, 0, Screen.width, Screen.height);
-            coordFondo = new Rect(1 - (Mathf.Min(texturaFondo.width, Screen.width) / (float)texturaFondo.width), 1 - (Mathf.Min(texturaFondo.height, Screen.height) / (float)texturaFondo.height), 1, 1);
-            string idioma = configuracionGeneral.Idioma;
+			string idioma = configuracionGeneral.Idioma;
 			if (idioma==null){
-				menuDeIdioma.enabled=true;
-				menuDeIdioma.puedeCerrar=false;
+				traduccion.ChangeLanguage("en");
+				mustShowLanguage=true;
 			}
 			else {
+				mustShowLanguage=false;
 				traduccion.ChangeLanguage(idioma);
+			}
+			CambioTamanoVentanaWindowsStore.cambioTamanoPantalla+=alCambiarTamanoPantalla;
+			alCambiarTamanoPantalla(Screen.width,Screen.height);
+		
+			texturaFondoMono = new Texture2D(1,1);
+			texturaFondoMono.SetPixel(0,0,new Color(142/255f,223/255f,1));
+			texturaFondoMono.Apply();                
+		}
+
+		void alCambiarTamanoPantalla(int ancho, int alto){
+			//Debug.Log("ReaL: "+ancho);
+			float altoMenuCentral = estiloBotonMenuCentral.CalcHeight (new GUIContent("Dummy"),float.MaxValue)*4;
+			posMenuCentral = new Rect ((Screen.width - anchoMenuCentral) / 2,Mathf.Max((Screen.height-altoMenuCentral)/2,0), anchoMenuCentral, altoMenuCentral);
+			posBotonesAudio = new Rect (Screen.width - 160, 10, 160, 70);
+			posBotonSonido = new Rect (0, 0, 70, 70);
+			posBotonMusica = new Rect (posBotonesAudio.width - 10 - 70, 0, 70, 70);
+			posLogo = new Rect((Screen.width - logo.width) / 2, 30, logo.width, logo.height);
+			posFondo = new Rect (0, 0, Screen.width, Screen.height);
+			coordFondo = new Rect(1 - (Mathf.Min(texturaFondo.width, Screen.width) / (float)texturaFondo.width), 1 - (Mathf.Min(texturaFondo.height, Screen.height) / (float)texturaFondo.height), 1, 1);
+
+			aPantallaCompleta= ancho>alto;
+			if (aPantallaCompleta){
+				Sonido.continuarBackground();
+			}else{
+				Sonido.PausarBackGround();
 			}
 
 		}
@@ -79,15 +101,36 @@ namespace Menu
 		// Upis called once per frame
 		void Update ()
 		{
+
+			if (!aPantallaCompleta){
+				return;
+			}
+
+			if (mustShowLanguage){
+				menuDeIdioma.enabled=true;
+				menuDeIdioma.puedeCerrar=false;
+				mustShowLanguage=false;
+			}
+
 			if (menuDeIdioma.enabled || menuPuntajes.enabled) {
 				return;
 			}
             
 		}
 
-        
+		void FixedUpdate(){
+			aPantallaCompleta = Screen.width>Screen.height;
+		}
+
 		void OnGUI ()
 		{
+			GUI.depth=0;
+			if (!aPantallaCompleta){
+				GUI.DrawTexture(posFondo,texturaFondoMono);
+				GUI.Label(posFondo,traduccion.GetTextValue("general_debe_ser_fullscreen"),estiloMenu.label);
+				return;
+			}
+
 			if (menuDeIdioma.enabled || menuPuntajes.enabled) {
 				return;
 			}

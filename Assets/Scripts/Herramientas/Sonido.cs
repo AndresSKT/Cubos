@@ -45,7 +45,7 @@ public class Sonido : MonoBehaviour {
     public static void continuarBackground() {
         if (instanciaMusicaActual != null && !instanciaMusicaActual.isPlaying) {
             debeEstarSonandoLaMusica = true;
-            instanciaMusicaActual.Play();
+            //instanciaMusicaActual.Play();
             
         }
     }

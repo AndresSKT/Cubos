@@ -63,11 +63,8 @@ public class Pausa : MonoBehaviour {
 	}
 
 	void Start () {
-		Vector2 tamtmp= new Vector2();
 		estiloBotonPrincipal = estilo.GetStyle("boton_principal");
 		estiloBotonVolverAlMenuPrincipal=estilo.GetStyle("boton_cancelar");
-		posBotonPausa = new Rect(Screen.width-64-10,10,64,64);
-		posFondo = new Rect(0,0,Screen.width,Screen.height);
 		entradaTactil=TouchManager.Instance;
 		colorDeFondo = new Color(1f,1f,1f,0.5f);
 		fondo = new Texture2D(1,1);
@@ -77,27 +74,38 @@ public class Pausa : MonoBehaviour {
 		instNivel = GetComponent<nivel>();
 
 
-		posMenuCentral = new Rect((Screen.width-anchoMenuCentral)/2,0,anchoMenuCentral,300);
-		posMenuCentral.y = (Screen.height-posMenuCentral.height)/2;
-		tamtmp=estiloBotonPrincipal.CalcSize(new GUIContent(LanguageManager.Instance.GetTextValue("menupausacontinuar")));
-		posBotonContinuar = new Rect((posMenuCentral.width-tamtmp.x)/2,10,tamtmp.x,tamtmp.y);
-		tamtmp=estiloBotonVolverAlMenuPrincipal.CalcSize(new GUIContent(LanguageManager.Instance.GetTextValue("menupausamenu")));
-		posBotonVolver = new Rect((posMenuCentral.width-tamtmp.x)/2,posMenuCentral.height-tamtmp.y-10,tamtmp.x,tamtmp.y);
 
-		tamtmp=estiloBotonVolverAlMenuPrincipal.CalcSize(new GUIContent(LanguageManager.Instance.GetTextValue("menupausareiniciar")));
-		posBotonReiniciar = new Rect((posMenuCentral.width-tamtmp.x)/2,posBotonVolver.yMin-tamtmp.y-10,tamtmp.x,tamtmp.y);
-
-		posBotonSonido = new Rect((posMenuCentral.width/2)-70-10,posBotonContinuar.yMax+20,70,70);
-		posBotonMusica = new Rect((posMenuCentral.width/2)+10,posBotonContinuar.yMax+20,70,70);
-	
 		estiloBotonMusicaOff = estilo.GetStyle("boton_musica_off");
 		estiloBotonMusicaOn = estilo.GetStyle("boton_musica_on");
 		estiloBotonSonidoOff = estilo.GetStyle("boton_sonido_off");
 		estiloBotonSonidoOn = estilo.GetStyle("boton_sonido_on");
 
 		Configuracion.configuracionGeneral.Load();
-
+		CambioTamanoVentanaWindowsStore.cambioTamanoPantalla+=OnCambioResolucion;
 		cargarNivel = GameObject.FindObjectOfType<LevelLoader>();
+		OnCambioResolucion(Screen.width,Screen.height);
+	}
+
+	void OnCambioResolucion(int ancho, int alto){
+		Vector2 tamtmp= new Vector2();
+
+		posBotonPausa = new Rect(Screen.width-64-10,10,64,64);
+		posFondo = new Rect(0,0,Screen.width,Screen.height);
+
+
+		posMenuCentral = new Rect((Screen.width-anchoMenuCentral)/2,0,anchoMenuCentral,300);
+		posMenuCentral.y = (Screen.height-posMenuCentral.height)/2;
+		tamtmp=estiloBotonPrincipal.CalcSize(new GUIContent(LanguageManager.Instance.GetTextValue("menupausacontinuar")));
+		posBotonContinuar = new Rect((posMenuCentral.width-tamtmp.x)/2,10,tamtmp.x,tamtmp.y);
+		tamtmp=estiloBotonVolverAlMenuPrincipal.CalcSize(new GUIContent(LanguageManager.Instance.GetTextValue("menupausamenu")));
+		posBotonVolver = new Rect((posMenuCentral.width-tamtmp.x)/2,posMenuCentral.height-tamtmp.y-10,tamtmp.x,tamtmp.y);
+		
+		tamtmp=estiloBotonVolverAlMenuPrincipal.CalcSize(new GUIContent(LanguageManager.Instance.GetTextValue("menupausareiniciar")));
+		posBotonReiniciar = new Rect((posMenuCentral.width-tamtmp.x)/2,posBotonVolver.yMin-tamtmp.y-10,tamtmp.x,tamtmp.y);
+		
+		posBotonSonido = new Rect((posMenuCentral.width/2)-70-10,posBotonContinuar.yMax+20,70,70);
+		posBotonMusica = new Rect((posMenuCentral.width/2)+10,posBotonContinuar.yMax+20,70,70);
+
 	}
 
 	void Update () {

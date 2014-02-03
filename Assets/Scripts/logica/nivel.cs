@@ -4,6 +4,7 @@ using Configuracion;
 using Logica.Objetivos;
 using vida;
 
+[RequireComponent(typeof(Pausa))]
 public class nivel : MonoBehaviour {
 
 	public delegate void finDelNivelHandler(int puntaje);
@@ -84,7 +85,10 @@ public class nivel : MonoBehaviour {
 
 	private bool _haFinalizado;
 	private int ObjetivoNoCumplidos=0;
-
+	private Pausa instPausa;
+	private bool estaEnPantallaCompleta=false;
+	private Texture2D texturaFondoMono;
+	private Rect posFondo;
 	public bool haFinalizado{
 		get {
 			return _haFinalizado;
@@ -98,23 +102,6 @@ public class nivel : MonoBehaviour {
 		estiloPuntaje = estilo.GetStyle ("puntaje");
 		estiloLabelVida = estilo.GetStyle ("label_vida");
 		estiloLabelMana = estilo.GetStyle("label_mana");
-
-		posGrupoVida = new Rect (50,10,Mathf.Min(400,Screen.width),60);
-		posLabelNombreVida = new Rect (13, 5, 70, 22);
-		longitudBarraDeVida = posGrupoVida.width - 20 -posLabelNombreVida.xMax;
-		posBarraVida = new Rect (posLabelNombreVida.xMax, 5,longitudBarraDeVida, 20);
-		posLabelVida = new Rect (posBarraVida.xMin,5,longitudBarraDeVida,22);
-		recfondoBarraVida = new Rect (posBarraVida.x,posBarraVida.y,posBarraVida.width,posBarraVida.height);
-
-		posLabelNombreMana = new Rect (13, posLabelNombreVida.yMax, 70,22);
-		longitudBarraDeMana = posGrupoVida.width - 20-posLabelNombreMana.xMax;
-		posBarraMana = new Rect (posLabelNombreMana.xMax, posBarraVida.yMax+5,longitudBarraDeMana, 20);
-		posLabelMana = new Rect (posBarraMana.xMin,posBarraMana.yMin,longitudBarraDeMana,22);
-		recfondoBarraMana = new Rect (posBarraMana.x,posBarraMana.y,longitudBarraDeMana,posBarraMana.height);
-
-
-		posicionPuntaje = new Rect (50, posGrupoVida.yMax+4, 300, this.estiloPuntaje.fontSize+estiloPuntaje.padding.bottom);
-
 
 		if (jugador != null) {
 			setJugador(jugador);
@@ -149,8 +136,43 @@ public class nivel : MonoBehaviour {
             Sonido.PlayBackgroundInLoop(audioDeFondo);
         }
 
+		instPausa=GetComponent<Pausa>();
+		texturaFondoMono = new Texture2D(1,1);
+		texturaFondoMono.SetPixel(0,0,new Color(142/255f,223/255f,1));
+		texturaFondoMono.Apply(); 
+		CambioTamanoVentanaWindowsStore.cambioTamanoPantalla+=RecalcularUI;
+		RecalcularUI(Screen.width,Screen.height);
 	}
 
+
+	void RecalcularUI(int ancho, int alto){
+		Debug.Log("En nivel");
+		Debug.Log(ancho+" "+alto);
+		posGrupoVida = new Rect (50,10,Mathf.Min(400,Screen.width),60);
+		posLabelNombreVida = new Rect (13, 5, 70, 22);
+		longitudBarraDeVida = posGrupoVida.width - 20 -posLabelNombreVida.xMax;
+		posBarraVida = new Rect (posLabelNombreVida.xMax, 5,longitudBarraDeVida, 20);
+		posLabelVida = new Rect (posBarraVida.xMin,5,longitudBarraDeVida,22);
+		recfondoBarraVida = new Rect (posBarraVida.x,posBarraVida.y,posBarraVida.width,posBarraVida.height);
+		
+		posLabelNombreMana = new Rect (13, posLabelNombreVida.yMax, 70,22);
+		longitudBarraDeMana = posGrupoVida.width - 20-posLabelNombreMana.xMax;
+		posBarraMana = new Rect (posLabelNombreMana.xMax, posBarraVida.yMax+5,longitudBarraDeMana, 20);
+		posLabelMana = new Rect (posBarraMana.xMin,posBarraMana.yMin,longitudBarraDeMana,22);
+		recfondoBarraMana = new Rect (posBarraMana.x,posBarraMana.y,longitudBarraDeMana,posBarraMana.height);
+
+		posFondo = new Rect(0,0,Screen.width,Screen.height);
+		
+		posicionPuntaje = new Rect (50, posGrupoVida.yMax+4, 300, this.estiloPuntaje.fontSize+estiloPuntaje.padding.bottom);
+		
+		estaEnPantallaCompleta=ancho>alto;
+		Debug.Log(estaEnPantallaCompleta);
+		if (!estaEnPantallaCompleta){
+			instPausa.pausar();
+			Debug.Log("Pauso");
+		}
+
+	}
 
 	public bool todosLosObjetivosEstanCumplidos(){
 		return ObjetivoNoCumplidos<=0;
@@ -165,6 +187,8 @@ public class nivel : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
+
+		//RecalcularUI(Screen.width,Screen.height);
 
 		if (vidaJugador != null) {
 			porcentajeVida = ((float)vidaJugador.vida/vidaJugador.vidaMaxima);
@@ -208,6 +232,12 @@ public class nivel : MonoBehaviour {
 
 	void OnGUI(){
 		GUI.depth=1;
+
+		if (!estaEnPantallaCompleta){
+			GUI.DrawTexture(posFondo,texturaFondoMono);
+			GUI.Label(posFondo,this.traductor.GetTextValue("general_debe_ser_fullscreen"),estilo.label);
+			return;
+		}
 
 		GUI.BeginGroup (posGrupoVida, estilo.box);
 			GUI.DrawTexture(recfondoBarraVida,fondoBarra);

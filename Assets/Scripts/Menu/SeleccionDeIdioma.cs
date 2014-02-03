@@ -26,25 +26,30 @@ public class SeleccionDeIdioma : MonoBehaviour {
 	// Use this for initialization
 		void Start () {
 			estiloBotonesBanderas = estilo.GetStyle("boton_banderas");
+			estiloBotonAtras = estilo.GetStyle("boton_atras");
+			CambioTamanoVentanaWindowsStore.cambioTamanoPantalla+=RecalCularUI;
+			RecalCularUI(Screen.width,Screen.height);
+		}
+	
+		void RecalCularUI(int ancho, int alto){
 			cantidaDeFilas = Mathf.CeilToInt(idiomasDisponibles.Length/(float)cantidadDeColumnas);
 			Vector2 tamBoton = estiloBotonesBanderas.CalcSize(new GUIContent(idiomasDisponibles[0].bandera));
 			areaBanderas = new Rect(0,0,(anchoBandera+margen)*cantidadDeColumnas,(cantidaDeFilas*tamBoton.y));
 			areaBanderas.x=Mathf.Max(0,(Screen.width-areaBanderas.width)/2);
 			areaBanderas.y=Mathf.Max(0,(Screen.height-areaBanderas.height)/2);
 			posFondo = new Rect(0,0,Screen.width,Screen.height);
-            coorFondo = new Rect(1 - (Mathf.Min(texturaFondo.width, Screen.width) / (float)texturaFondo.width), 1 - (Mathf.Min(texturaFondo.height, Screen.height) / (float)texturaFondo.height), 1, 1);
-            posCerrar = new Rect(20, 20, 64, 64);
-			estiloBotonAtras = estilo.GetStyle("boton_atras");
-            
+			coorFondo = new Rect(1 - (Mathf.Min(texturaFondo.width, Screen.width) / (float)texturaFondo.width), 1 - (Mathf.Min(texturaFondo.height, Screen.height) / (float)texturaFondo.height), 1, 1);
+			posCerrar = new Rect(20, 20, 64, 64);
+
 		}
-	
+
 	// Update is called once per frame
 	void Update () {
 	
 	}
 
 	void OnGUI(){
-			GUI.depth=0;
+			GUI.depth=1;
 			GUI.DrawTextureWithTexCoords(posFondo,texturaFondo,coorFondo);
             
 			if (puedeCerrar){
@@ -65,7 +70,7 @@ public class SeleccionDeIdioma : MonoBehaviour {
 					}
 					if (GUILayout.Button(idiomasDisponibles[f+i].bandera,estiloBotonesBanderas,GUILayout.Width(anchoBandera))){
 						Configuracion.configuracionGeneral.Idioma=idiomasDisponibles[f+i].llave;
-						enabled=false;
+						this.enabled=false;
 					}
 
 				}
